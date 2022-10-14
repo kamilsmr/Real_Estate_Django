@@ -1,3 +1,4 @@
+from ast import keyword
 from django.shortcuts import get_object_or_404, render
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from listings.choices import price_choices, bedroom_choices, state_choices
@@ -27,10 +28,27 @@ def listing(request, listing_id):
     return render(request, 'listings/listing.html')
 
 def search(request):
+    queryset_list = Listing.objects.order_by('-list_date')
+
+    # Keywords
+
+    if 'keywords' in request.Get:
+       keywords = request.Get['keywords']
+       if keywords:
+        queryset_list =  queryset_list.filter(description__icontains=keywords)
+
+    # City 
+
+    if 'city' in request.Get:
+        city = request.Get['city']
+        if city:
+            queryset_list = queryset_list.filter(city__iexact=city)
+
 
     context = {
         'state_choices': state_choices,
         'bedroom_choices': bedroom_choices,
         'price_choices': price_choices,
+        'listings': queryset_list 
     }
     return render(request, 'listings/search.html', context)
