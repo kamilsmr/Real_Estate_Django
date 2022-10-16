@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from django.contrib import messages
+from django.contrib import messages, auth
 from django.contrib.auth.models import User
 
 def register(request):
@@ -26,7 +26,13 @@ def register(request):
                     messages.error(request, 'That email is being used')
                     return redirect('register')
                 else:
-                    return
+                    user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name)
+                    # auth.login(request, user)
+                    # messages.success(request, 'You are now logged in')
+                    # return redirect('index')
+                    user.save()
+                    messages.success(request, 'You are now registered and can log in')
+                    return redirect('login')
 
         else:
             messages.error(request, 'Passwords do not match')
