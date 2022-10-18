@@ -24,10 +24,10 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="{% url 'listings' %}">Home</a>
+            <a href="{% url 'index' %}">Home</a>
           </li>
           <li class="breadcrumb-item">
-            <a href="listings.html">Listings</a>
+            <a href="{% url 'listings' %}">Listings</a>
           </li>
           <li class="breadcrumb-item active">{{ listing.title }}</li>
         </ol>

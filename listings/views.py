@@ -47,21 +47,21 @@ def search(request):
     # State 
 
     if 'state' in request.Get:
-        city = request.Get['state']
+        state = request.Get['state']
         if state:
             queryset_list = queryset_list.filter(state__iexact=state)
     
     # Bedrooms
 
     if 'bedrooms' in request.Get:
-        city = request.Get['bedrooms']
+        bedrooms = request.Get['bedrooms']
         if bedrooms:
             queryset_list = queryset_list.filter(bedrooms__lte=bedrooms)
 
     # Price
 
     if 'price' in request.Get:
-        city = request.Get['price']
+        price = request.Get['price']
         if price:
             queryset_list = queryset_list.filter(price__lte=price)
 
