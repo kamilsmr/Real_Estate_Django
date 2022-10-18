@@ -147,7 +147,7 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
 
-<!-- email config -->
+# <!-- email config -->
 
 EMAİL_HOST = 'kamils6035@gmail.com'
 EMAİL_PORT = 587
