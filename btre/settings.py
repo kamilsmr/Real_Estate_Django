@@ -151,6 +151,6 @@ MESSAGE_TAGS = {
 
 EMAİL_HOST = 'kamils6035@gmail.com'
 EMAİL_PORT = 587
-EMAİL_HOST_USER =''
+EMAİL_HOST_USER ='kamils6035@gmail.com'
 EMAİL_HOST_PASSWORD = ''
 EMAİL_USE_TLS = True
