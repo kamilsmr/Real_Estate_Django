@@ -1,12 +1,12 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} 
 
 {% load humanize %}
 
 {% block title %} | Welcome {% endblock %}
 
 {% block content %}
-  <!-- Showcase -->
-  <section id="showcase">
+<!-- Showcase -->
+<section id="showcase">
     <div class="container text-center">
       <div class="home-search p-5">
         <div class="overlay p-5">
@@ -35,7 +35,6 @@
                     <option selected="true" disabled="disabled">State (All)</option>
                     {% for key,value in state_choices.items %}
                       <option value="{{ key }}">{{ value }}</option>
-
                     {% endfor %}
                   </select>
                 </div>
@@ -48,9 +47,6 @@
                     <option selected="true" disabled="disabled">Bedrooms (All)</option>
                     {% for key,value in bedroom_choices.items %}
                       <option value="{{ key }}">{{ value }}</option>
-
-                      
-
                     {% endfor %}
                   </select>
                 </div>
@@ -59,9 +55,6 @@
                     <option selected="true" disabled="disabled">Max Price (Any)</option>
                     {% for key,value in price_choices.items %}
                       <option value="{{ key }}">{{ value }}</option>
-
-                      
-
                     {% endfor %}
                   </select>
                 </div>
@@ -73,7 +66,8 @@
       </div>
     </div>
   </section>
-
+<br>
+  <!-- Alerts -->
   {% include 'partials/_alerts.html' %}
 
   <!-- Listings -->
@@ -86,7 +80,7 @@
             <!-- Listing 1 -->
             <div class="col-md-6 col-lg-4 mb-4">
               <div class="card listing-preview">
-                <img class="card-img-top" src="{{listing.photo_main.url}}" alt="">
+                <img class="card-img-top" src="{{ listing.photo_main.url }}" alt="">
                 <div class="card-img-overlay">
                   <h2>
                     <span class="badge badge-secondary text-white">${{ listing.price | intcomma }}</span>
@@ -96,7 +90,7 @@
                   <div class="listing-heading text-center">
                     <h4 class="text-primary">{{ listing.title }}</h4>
                     <p>
-                      <i class="fas fa-map-marker text-secondary"></i> {{ listing.city }} {{ listing.state }} {{ listing.zipcode }}</p>
+                      <i class="fas fa-map-marker text-secondary"></i> {{ listing.city }} {{ listing.state }}, {{ listing.zipcode }}</p>
                   </div>
                   <hr>
                   <div class="row py-2 text-secondary">
@@ -125,15 +119,13 @@
                 </div>
               </div>
             </div>
-
           {% endfor %}
-
         {% else %}
           <div class="col-md-12">
             <p>No Listings Available</p>
           </div>
         {% endif %}
-        
+
       </div>
     </div>
   </section>
